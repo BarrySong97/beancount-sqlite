@@ -33,43 +33,49 @@ def generate_truncate_sql():
     ])
 
 def get_account_type_and_categories(account_name):
-    """Extract account type and category name from account name."""
+    """Extract account type and category hierarchy from account name."""
     parts = account_name.split(':')
-    account_type = parts[0]  # 例如 "Equity"
-    # 只取分类名称部分，不包含账户类型
-    category = parts[1] if len(parts) > 1 else None
-    return account_type, category
+    account_type = parts[0]  # 例如 "Liabilities"
+    # 返回所有分类部分，例如 ["US", "Chase", "Slate"]
+    categories = parts[1:] if len(parts) > 1 else []
+    return account_type, categories
 
 def ensure_account_category(account_name):
-    """Ensure account category exists and return its id."""
-    account_type, category = get_account_type_and_categories(account_name)
+    """Ensure account category exists and return its id of the leaf category."""
+    account_type, categories = get_account_type_and_categories(account_name)
     
-    # 添加调试信息
     print(f"Processing account: {account_name}")
     print(f"Account type: {account_type}")
-    print(f"Category: {category}")
+    print(f"Categories: {categories}")
     
-    if not category:
+    if not categories:
         print("No category found, returning None")
         return None
         
-    category_key = f"{account_type}:{category}"
-    print(f"Category key: {category_key}")
-    print(f"Current category_map: {category_map}")
+    parent_id = None
+    category_id = None
     
-    if category_key not in category_map:
-        next_category_id = len(category_map) + 1  # 从1开始
-        sql = f"""INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES ({next_category_id}, '{escape_sql(category)}', NULL, 
-                 '{escape_sql(account_type)}');"""
-        sql_statements.append(sql)
-        category_map[category_key] = next_category_id
-        print(f"Created new category with id: {next_category_id}")
-        return next_category_id
+    # 逐级处理每个分类
+    for category in categories:
+        category_key = f"{account_type}:{category}:{parent_id}"
+        print(f"Processing category: {category}, parent_id: {parent_id}")
+        
+        if category_key not in category_map:
+            next_category_id = len(category_map) + 1
+            sql = f"""INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES ({next_category_id}, '{escape_sql(category)}', {parent_id or 'NULL'}, 
+                     '{escape_sql(account_type)}');"""
+            sql_statements.append(sql)
+            category_map[category_key] = next_category_id
+            category_id = next_category_id
+            print(f"Created new category {category} with id: {category_id}")
+        else:
+            category_id = category_map[category_key]
+            print(f"Found existing category {category} with id: {category_id}")
+        
+        parent_id = category_id  # 更新parent_id为当前category的id，用于下一级
     
-    category_id = category_map[category_key]
-    print(f"Found existing category with id: {category_id}")
-    return category_id
+    return category_id  # 返回最后一级分类的id
 
 def import_accounts(entries):
     for eid, entry in enumerate(entries):

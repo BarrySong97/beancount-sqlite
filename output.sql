@@ -12,8 +12,8 @@ DELETE FROM account;
 DELETE FROM account_category;
 DELETE FROM commodity;
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (1, 'Opening-Balances', NULL, 
-                 'Equity');
+                     VALUES (1, 'Opening-Balances', NULL, 
+                     'Equity');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (3, 'Equity:Opening-Balances',  -- 从1开始
@@ -21,8 +21,8 @@ INSERT INTO account (id, name, account_type, account_category_id,
                      1, '1980-05-12',
                      '{}');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (2, 'AccountsPayable', NULL, 
-                 'Liabilities');
+                     VALUES (2, 'AccountsPayable', NULL, 
+                     'Liabilities');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (4, 'Liabilities:AccountsPayable',  -- 从1开始
@@ -30,199 +30,292 @@ INSERT INTO account (id, name, account_type, account_category_id,
                      2, '1980-05-12',
                      '{}');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (3, 'US', NULL, 
-                 'Liabilities');
+                     VALUES (3, 'US', NULL, 
+                     'Liabilities');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (4, 'Chase', 3, 
+                     'Liabilities');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (5, 'Slate', 4, 
+                     'Liabilities');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (5, 'Liabilities:US:Chase:Slate',  -- 从1开始
                      'Liabilities',
-                     3, '1980-05-12',
+                     5, '1980-05-12',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (5, 'USD');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (4, 'US', NULL, 
-                 'Income');
+                     VALUES (6, 'US', NULL, 
+                     'Income');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (7, 'Federal', 6, 
+                     'Income');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (8, 'PreTax401k', 7, 
+                     'Income');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (6, 'Income:US:Federal:PreTax401k',  -- 从1开始
                      'Income',
-                     4, '1980-05-12',
+                     8, '1980-05-12',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (6, 'IRAUSD');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (5, 'US', NULL, 
-                 'Assets');
+                     VALUES (9, 'US', NULL, 
+                     'Assets');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (10, 'Federal', 9, 
+                     'Assets');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (11, 'PreTax401k', 10, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (7, 'Assets:US:Federal:PreTax401k',  -- 从1开始
                      'Assets',
-                     5, '1980-05-12',
+                     11, '1980-05-12',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (7, 'IRAUSD');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (6, 'Food', NULL, 
-                 'Expenses');
+                     VALUES (12, 'Food', NULL, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (13, 'Groceries', 12, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (8, 'Expenses:Food:Groceries',  -- 从1开始
                      'Expenses',
-                     6, '1980-05-12',
+                     13, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (14, 'Restaurant', 12, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (9, 'Expenses:Food:Restaurant',  -- 从1开始
                      'Expenses',
-                     6, '1980-05-12',
+                     14, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (15, 'Coffee', 12, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (10, 'Expenses:Food:Coffee',  -- 从1开始
                      'Expenses',
-                     6, '1980-05-12',
+                     15, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (16, 'Alcohol', 12, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (11, 'Expenses:Food:Alcohol',  -- 从1开始
                      'Expenses',
-                     6, '1980-05-12',
+                     16, '1980-05-12',
                      '{}');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (7, 'Transport', NULL, 
-                 'Expenses');
+                     VALUES (17, 'Transport', NULL, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (18, 'Tram', 17, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (12, 'Expenses:Transport:Tram',  -- 从1开始
                      'Expenses',
-                     7, '1980-05-12',
+                     18, '1980-05-12',
                      '{}');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (8, 'Home', NULL, 
-                 'Expenses');
+                     VALUES (19, 'Home', NULL, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (20, 'Rent', 19, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (13, 'Expenses:Home:Rent',  -- 从1开始
                      'Expenses',
-                     8, '1980-05-12',
+                     20, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (21, 'Electricity', 19, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (14, 'Expenses:Home:Electricity',  -- 从1开始
                      'Expenses',
-                     8, '1980-05-12',
+                     21, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (22, 'Internet', 19, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (15, 'Expenses:Home:Internet',  -- 从1开始
                      'Expenses',
-                     8, '1980-05-12',
+                     22, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (23, 'Phone', 19, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (16, 'Expenses:Home:Phone',  -- 从1开始
                      'Expenses',
-                     8, '1980-05-12',
+                     23, '1980-05-12',
                      '{}');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (9, 'Financial', NULL, 
-                 'Expenses');
+                     VALUES (24, 'Financial', NULL, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (25, 'Fees', 24, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (17, 'Expenses:Financial:Fees',  -- 从1开始
                      'Expenses',
-                     9, '1980-05-12',
+                     25, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (26, 'Commissions', 24, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (18, 'Expenses:Financial:Commissions',  -- 从1开始
                      'Expenses',
-                     9, '1980-05-12',
+                     26, '1980-05-12',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (27, 'BofA', 9, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (27, 'Assets:US:BofA',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     27, '2013-01-01',
                      '{"address": "123 America Street, LargeTown, USA", "institution": "Bank of America", "phone": "+1.012.345.6789"}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (28, 'Checking', 27, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (28, 'Assets:US:BofA:Checking',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     28, '2013-01-01',
                      '{"account": "00234-48574897"}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (28, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (29, 'ETrade', 9, 
+                     'Assets');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (30, 'Cash', 29, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (29, 'Assets:US:ETrade:Cash',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     30, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (29, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (31, 'ITOT', 29, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (30, 'Assets:US:ETrade:ITOT',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     31, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (30, 'ITOT');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (32, 'VEA', 29, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (31, 'Assets:US:ETrade:VEA',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     32, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (31, 'VEA');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (33, 'VHT', 29, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (32, 'Assets:US:ETrade:VHT',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     33, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (32, 'VHT');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (34, 'GLD', 29, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (33, 'Assets:US:ETrade:GLD',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     34, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (33, 'GLD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (35, 'ETrade', 6, 
+                     'Income');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (36, 'Gains', 35, 
+                     'Income');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (34, 'Income:US:ETrade:Gains',  -- 从1开始
                      'Income',
-                     4, '2013-01-01',
+                     36, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (34, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (37, 'Dividends', 35, 
+                     'Income');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (35, 'Income:US:ETrade:Dividends',  -- 从1开始
                      'Income',
-                     4, '2013-01-01',
+                     37, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (35, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (38, 'Vanguard', 9, 
+                     'Assets');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (39, 'VBMPX', 38, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (36, 'Assets:US:Vanguard:VBMPX',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     39, '2013-01-01',
                      '{"number": "882882"}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (36, 'VBMPX');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (40, 'RGAGX', 38, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (37, 'Assets:US:Vanguard:RGAGX',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     40, '2013-01-01',
                      '{"number": "882882"}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (37, 'RGAGX');
@@ -230,112 +323,175 @@ INSERT INTO account (id, name, account_type, account_category_id,
                      open_date, meta) 
                      VALUES (38, 'Assets:US:Vanguard',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     38, '2013-01-01',
                      '{"address": "P.O. Box 1110, Valley Forge, PA 19482-1110", "institution": "Vanguard Group", "phone": "+1.800.523.1188"}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (38, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (41, 'Hoogle', 6, 
+                     'Income');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (42, 'Match401k', 41, 
+                     'Income');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (39, 'Income:US:Hoogle:Match401k',  -- 从1开始
                      'Income',
-                     4, '2013-01-01',
+                     42, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (39, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (43, 'Cash', 38, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (40, 'Assets:US:Vanguard:Cash',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     43, '2013-01-01',
                      '{"number": "882882"}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (40, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (44, 'Salary', 41, 
+                     'Income');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (41, 'Income:US:Hoogle:Salary',  -- 从1开始
                      'Income',
-                     4, '2013-01-01',
+                     44, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (41, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (45, 'GroupTermLife', 41, 
+                     'Income');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (42, 'Income:US:Hoogle:GroupTermLife',  -- 从1开始
                      'Income',
-                     4, '2013-01-01',
+                     45, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (42, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (46, 'Vacation', 41, 
+                     'Income');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (43, 'Income:US:Hoogle:Vacation',  -- 从1开始
                      'Income',
-                     4, '2013-01-01',
+                     46, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (43, 'VACHR');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (47, 'Hoogle', 9, 
+                     'Assets');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (48, 'Vacation', 47, 
+                     'Assets');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (44, 'Assets:US:Hoogle:Vacation',  -- 从1开始
                      'Assets',
-                     5, '2013-01-01',
+                     48, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (44, 'VACHR');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (10, 'Vacation', NULL, 
-                 'Expenses');
+                     VALUES (49, 'Vacation', NULL, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (45, 'Expenses:Vacation',  -- 从1开始
                      'Expenses',
-                     10, '2013-01-01',
+                     49, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (45, 'VACHR');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (11, 'Health', NULL, 
-                 'Expenses');
+                     VALUES (50, 'Health', NULL, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (51, 'Life', 50, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (52, 'GroupTermLife', 51, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (46, 'Expenses:Health:Life:GroupTermLife',  -- 从1开始
                      'Expenses',
-                     11, '2013-01-01',
+                     52, '2013-01-01',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (53, 'Medical', 50, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (54, 'Insurance', 53, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (47, 'Expenses:Health:Medical:Insurance',  -- 从1开始
                      'Expenses',
-                     11, '2013-01-01',
+                     54, '2013-01-01',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (55, 'Dental', 50, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (56, 'Insurance', 55, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (48, 'Expenses:Health:Dental:Insurance',  -- 从1开始
                      'Expenses',
-                     11, '2013-01-01',
+                     56, '2013-01-01',
                      '{}');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (57, 'Vision', 50, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (58, 'Insurance', 57, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (49, 'Expenses:Health:Vision:Insurance',  -- 从1开始
                      'Expenses',
-                     11, '2013-01-01',
+                     58, '2013-01-01',
                      '{}');
 INSERT INTO account_category (id, name, parent_id, account_type)
-                 VALUES (12, 'Taxes', NULL, 
-                 'Expenses');
+                     VALUES (59, 'Taxes', NULL, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (60, 'Y2013', 59, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (61, 'US', 60, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (62, 'Federal', 61, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (63, 'PreTax401k', 62, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (50, 'Expenses:Taxes:Y2013:US:Federal:PreTax401k',  -- 从1开始
                      'Expenses',
-                     12, '2013-01-01',
+                     63, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (50, 'IRAUSD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (64, 'Medicare', 61, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (51, 'Expenses:Taxes:Y2013:US:Medicare',  -- 从1开始
                      'Expenses',
-                     12, '2013-01-01',
+                     64, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (51, 'USD');
@@ -343,55 +499,82 @@ INSERT INTO account (id, name, account_type, account_category_id,
                      open_date, meta) 
                      VALUES (52, 'Expenses:Taxes:Y2013:US:Federal',  -- 从1开始
                      'Expenses',
-                     12, '2013-01-01',
+                     62, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (52, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (65, 'CityNYC', 61, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (53, 'Expenses:Taxes:Y2013:US:CityNYC',  -- 从1开始
                      'Expenses',
-                     12, '2013-01-01',
+                     65, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (53, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (66, 'SDI', 61, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (54, 'Expenses:Taxes:Y2013:US:SDI',  -- 从1开始
                      'Expenses',
-                     12, '2013-01-01',
+                     66, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (54, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (67, 'State', 61, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (55, 'Expenses:Taxes:Y2013:US:State',  -- 从1开始
                      'Expenses',
-                     12, '2013-01-01',
+                     67, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (55, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (68, 'SocSec', 61, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (56, 'Expenses:Taxes:Y2013:US:SocSec',  -- 从1开始
                      'Expenses',
-                     12, '2013-01-01',
+                     68, '2013-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (56, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (69, 'Y2014', 59, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (70, 'US', 69, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (71, 'Federal', 70, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (72, 'PreTax401k', 71, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (766, 'Expenses:Taxes:Y2014:US:Federal:PreTax401k',  -- 从1开始
                      'Expenses',
-                     12, '2014-01-01',
+                     72, '2014-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (766, 'IRAUSD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (73, 'Medicare', 70, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (767, 'Expenses:Taxes:Y2014:US:Medicare',  -- 从1开始
                      'Expenses',
-                     12, '2014-01-01',
+                     73, '2014-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (767, 'USD');
@@ -399,55 +582,82 @@ INSERT INTO account (id, name, account_type, account_category_id,
                      open_date, meta) 
                      VALUES (768, 'Expenses:Taxes:Y2014:US:Federal',  -- 从1开始
                      'Expenses',
-                     12, '2014-01-01',
+                     71, '2014-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (768, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (74, 'CityNYC', 70, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (769, 'Expenses:Taxes:Y2014:US:CityNYC',  -- 从1开始
                      'Expenses',
-                     12, '2014-01-01',
+                     74, '2014-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (769, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (75, 'SDI', 70, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (770, 'Expenses:Taxes:Y2014:US:SDI',  -- 从1开始
                      'Expenses',
-                     12, '2014-01-01',
+                     75, '2014-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (770, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (76, 'State', 70, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (771, 'Expenses:Taxes:Y2014:US:State',  -- 从1开始
                      'Expenses',
-                     12, '2014-01-01',
+                     76, '2014-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (771, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (77, 'SocSec', 70, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (772, 'Expenses:Taxes:Y2014:US:SocSec',  -- 从1开始
                      'Expenses',
-                     12, '2014-01-01',
+                     77, '2014-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (772, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (78, 'Y2015', 59, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (79, 'US', 78, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (80, 'Federal', 79, 
+                     'Expenses');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (81, 'PreTax401k', 80, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (1516, 'Expenses:Taxes:Y2015:US:Federal:PreTax401k',  -- 从1开始
                      'Expenses',
-                     12, '2015-01-01',
+                     81, '2015-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (1516, 'IRAUSD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (82, 'Medicare', 79, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (1517, 'Expenses:Taxes:Y2015:US:Medicare',  -- 从1开始
                      'Expenses',
-                     12, '2015-01-01',
+                     82, '2015-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (1517, 'USD');
@@ -455,39 +665,51 @@ INSERT INTO account (id, name, account_type, account_category_id,
                      open_date, meta) 
                      VALUES (1518, 'Expenses:Taxes:Y2015:US:Federal',  -- 从1开始
                      'Expenses',
-                     12, '2015-01-01',
+                     80, '2015-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (1518, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (83, 'CityNYC', 79, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (1519, 'Expenses:Taxes:Y2015:US:CityNYC',  -- 从1开始
                      'Expenses',
-                     12, '2015-01-01',
+                     83, '2015-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (1519, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (84, 'SDI', 79, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (1520, 'Expenses:Taxes:Y2015:US:SDI',  -- 从1开始
                      'Expenses',
-                     12, '2015-01-01',
+                     84, '2015-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (1520, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (85, 'State', 79, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (1521, 'Expenses:Taxes:Y2015:US:State',  -- 从1开始
                      'Expenses',
-                     12, '2015-01-01',
+                     85, '2015-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (1521, 'USD');
+INSERT INTO account_category (id, name, parent_id, account_type)
+                     VALUES (86, 'SocSec', 79, 
+                     'Expenses');
 INSERT INTO account (id, name, account_type, account_category_id, 
                      open_date, meta) 
                      VALUES (1522, 'Expenses:Taxes:Y2015:US:SocSec',  -- 从1开始
                      'Expenses',
-                     12, '2015-01-01',
+                     86, '2015-01-01',
                      '{}');
 INSERT INTO account_currency (account_id, currency)
                              VALUES (1522, 'USD');
