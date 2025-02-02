@@ -15,6 +15,10 @@ The project has three main components:
 
 To get started with beanpost, follow these steps:
 
+please install the requirements first:
+
+`pip install -r requirements.txt`
+
 1. Create the schema in your SQLite database with schema.sqlite.sql
 
 2. convert a beancount file into the sqlite sql file:
